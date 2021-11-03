@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 18 18:23:27 2021
+
+@author: maryamali
+"""
+
+"""
+Created on Thu Sep 16 14:26:21 2021
+
+@author: maryamali
+"""
+
+import random
+import operator  
+import matplotlib
+import matplotlib.pyplot
+
+
+
+# Number of Agents
+num_of_agents = 10
+
+# Create a new empty list we can add sets of coordinates to
+
+agents = []
+
+for i in range(num_of_agents):
+    agents.append([random.randint(0,99),random.randint(0,99)])
+
+
+# Print agents
+
+print (agents)
+for i in range (len (agents)) :
+   print (agents[i])
+
+#Move agents 
+
+for i in range(num_of_agents):
+   random_number = random.random()
+   # Move the Y  
+   #print ("random_number" , random_number)
+   if  random_number < 0.5:
+       agents[i][0]= agents[i][0] + 1
+   else:
+       agents[i][0] = agents[i][0] - 1
+   #print ("y0" , agents[i][0])
+   # Move the X 
+   random_number = random.random()
+   #print ("random_number" , random_number)
+   if  random_number < 0.5:
+       agents[i][1] = agents[i][1] + 1
+   else:
+       agents[i][1] = agents[i][1] - 1
+   #print ("x0" , agents[i][1] )
+
+
+# Print agents
+print ("After the move")
+print (agents)
+for i in range (len (agents)) :
+   print (agents[i])
+
+
+
+# Check the length of the list
+print("len (agents)", len (agents))
+print (agents)
+
+
+# Work out the distance between the two sets xs and Ys
+
+Distance = ((agents[0][0]- agents[1][0]) * (agents[0][0]- agents[1][0]) + (agents[0][1] - agents[1][1]) * (agents[0][1] - agents[1][1]))**0.5
+print ("Distance" , Distance)
+
+matplotlib.pyplot.ylim(0, 99)
+matplotlib.pyplot.xlim(0, 99)
+for i in range(num_of_agents):
+    matplotlib.pyplot.scatter(agents[i][1],agents[i][0])
+
+#turn the top agent red
+
+top = max (agents, key=operator.itemgetter(0))
+matplotlib.pyplot.scatter (top[1], top[0], color = 'red')
+    
+buttom = min(agents, key=operator.itemgetter(0))
+matplotlib.pyplot.scatter (buttom[1], buttom[0], color = 'pink')
+                              
+
+matplotlib.pyplot.show()
+
+
+
+
+
+
+
+
+
+
+
